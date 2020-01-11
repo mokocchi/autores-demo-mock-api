@@ -1,9 +1,8 @@
 from flask import Flask, json, Response
-import sys
+import os
 
 f = open("respuestas/actividades_15")
 actividad_15 = f.read()
-print(actividad_15)
 
 api = Flask(__name__)
 
@@ -21,6 +20,4 @@ def hello_world():
 
 
 if __name__ == '__main__':
-    if(len(sys.argv) > 1):
-        port = sys.argv[1]
-        api.run(threaded=True, port=port)
+    api.run(threaded=True, port=os.environ.get("PORT", 5000))
