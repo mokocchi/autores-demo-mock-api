@@ -1,4 +1,5 @@
 from flask import Flask, json, Response
+import sys
 
 f = open("respuestas/actividades_15")
 actividad_15 = f.read()
@@ -6,7 +7,7 @@ actividad_15 = f.read()
 api = Flask(__name__)
 
 
-@api.route('/api/v1.0/actividades/<id>', methods=['GET'])
+@api.route('/api/v1.0/actividades/<port = sys.argv[1]id>', methods=['GET'])
 def get_actividad(id):
     item = id
     parsed = json.loads(actividad_15)
@@ -14,4 +15,6 @@ def get_actividad(id):
 
 
 if __name__ == '__main__':
-    api.run(threaded=True, port=80)
+    if(len(sys.argv) > 1):
+        port = sys.argv[1]
+        api.run(threaded=True, port=port)
