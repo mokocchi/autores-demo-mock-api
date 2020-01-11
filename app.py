@@ -7,7 +7,7 @@ actividad_15 = f.read()
 api = Flask(__name__)
 
 
-@api.route('/api/v1.0/actividades/<port = sys.argv[1]id>', methods=['GET'])
+@api.route('/api/v1.0/actividades/<int:id>', methods=['GET'])
 def get_actividad(id):
     item = id
     parsed = json.loads(actividad_15)
