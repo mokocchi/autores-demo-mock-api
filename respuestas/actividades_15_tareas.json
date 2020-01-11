@@ -17,7 +17,7 @@
     },
     {
         "id": 39,
-        "nombre": "Opcion 1",
+        "nombre": "Ventilador",
         "consigna": "Sacar una foto del ventilador",
         "dominio": {
             "id": 2,
@@ -33,7 +33,7 @@
     },
     {
         "id": 40,
-        "nombre": "Opcion 2",
+        "nombre": "Perros",
         "consigna": "Eleg\u00ed el perro que sea m\u00e1s grande",
         "dominio": {
             "id": 30,
@@ -60,7 +60,7 @@
     },
     {
         "id": 41,
-        "nombre": "Opcion 3",
+        "nombre": "Helado",
         "consigna": "Marca los gustos de helado que te gustan",
         "dominio": {
             "id": 31,
@@ -96,7 +96,7 @@
     },
     {
         "id": 42,
-        "nombre": "Ultima tarea",
+        "nombre": "Loter\u00eda",
         "consigna": "Escrib\u00ed un n\u00famero de loter\u00eda",
         "dominio": {
             "id": 29,

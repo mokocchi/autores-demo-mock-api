@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "nombre": "Ingl\u00e9s"
+    },
+    {
+        "id": 2,
+        "nombre": "Arte"
+    },
+    {
+        "id": 18,
+        "nombre": "Lengua"
+    },
+    {
+        "id": 29,
+        "nombre": "Matem\u00e1tica"
+    },
+    {
+        "id": 30,
+        "nombre": "Naturales"
+    },
+    {
+        "id": 31,
+        "nombre": "Sociales"
+    },
+    {
+        "id": 32,
+        "nombre": "Inform\u00e1tica"
+    },
+    {
+        "id": 33,
+        "nombre": "Pruebas"
+    },
+    {
+        "id": 35,
+        "nombre": "Educaci\u00f3n F\u00edsica"
+    }
+]

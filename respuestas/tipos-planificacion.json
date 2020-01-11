@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "nombre": "Secuencial"
+    },
+    {
+        "id": 2,
+        "nombre": "Libre"
+    },
+    {
+        "id": 3,
+        "nombre": "Bifurcada"
+    }
+]

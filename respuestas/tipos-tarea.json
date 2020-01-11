@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "nombre": "Simple",
+        "codigo": "simple"
+    },
+    {
+        "id": 2,
+        "nombre": "Ingresar texto",
+        "codigo": "textInput"
+    },
+    {
+        "id": 3,
+        "nombre": "Ingresar n\u00famero",
+        "codigo": "numberInput"
+    },
+    {
+        "id": 4,
+        "nombre": "Sacar foto",
+        "codigo": "cameraInput"
+    },
+    {
+        "id": 5,
+        "nombre": "Elegir una opci\u00f3n",
+        "codigo": "select"
+    },
+    {
+        "id": 6,
+        "nombre": "Opci\u00f3n m\u00faltiple",
+        "codigo": "multiple"
+    },
+    {
+        "id": 7,
+        "nombre": "Contadores",
+        "codigo": "counters"
+    },
+    {
+        "id": 8,
+        "nombre": "Recolecci\u00f3n",
+        "codigo": "collect"
+    },
+    {
+        "id": 9,
+        "nombre": "Dep\u00f3sito",
+        "codigo": "deposit"
+    },
+    {
+        "id": 10,
+        "nombre": "Localizaci\u00f3n",
+        "codigo": "GPSInput"
+    }
+]
