@@ -20,4 +20,4 @@ def hello_world():
 
 
 if __name__ == '__main__':
-    api.run(threaded=True, port=os.environ.get("PORT", 5000))
+    api.run(threaded=True, host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
