@@ -1,0 +1,181 @@
+{
+    "id": 15,
+    "nombre": "Configuraci\u00f3nPrototipo3.2",
+    "objetivo": "Probar todo el flow hasta la descarga",
+    "idioma": {
+        "id": 2,
+        "nombre": "English (Ingl\u00e9s)",
+        "code": "en"
+    },
+    "dominio": {
+        "id": 33,
+        "nombre": "Pruebas"
+    },
+    "tipo_planificacion": {
+        "id": 3,
+        "nombre": "Bifurcada"
+    },
+    "tareas": [
+        {
+            "id": 38,
+            "nombre": "Levantar un pie",
+            "consigna": "Levanta el pie derecho",
+            "dominio": {
+                "id": 35,
+                "nombre": "Educaci\u00f3n F\u00edsica"
+            },
+            "tipo": {
+                "id": 1,
+                "nombre": "Simple",
+                "codigo": "simple"
+            },
+            "extra": [],
+            "codigo": "ad801880859252cdec5a2891d6cd2f81"
+        },
+        {
+            "id": 39,
+            "nombre": "Opcion 1",
+            "consigna": "Sacar una foto del ventilador",
+            "dominio": {
+                "id": 2,
+                "nombre": "Arte"
+            },
+            "tipo": {
+                "id": 4,
+                "nombre": "Sacar foto",
+                "codigo": "cameraInput"
+            },
+            "extra": [],
+            "codigo": "8a8b95d35985fdc8e4a101f80bdec046"
+        },
+        {
+            "id": 40,
+            "nombre": "Opcion 2",
+            "consigna": "Eleg\u00ed el perro que sea m\u00e1s grande",
+            "dominio": {
+                "id": 30,
+                "nombre": "Naturales"
+            },
+            "tipo": {
+                "id": 5,
+                "nombre": "Elegir una opci\u00f3n",
+                "codigo": "select"
+            },
+            "extra": {
+                "elements": [
+                    {
+                        "code": "ead7c8c740a60e96a3d8b3a96f3286d1",
+                        "name": "Momo"
+                    },
+                    {
+                        "code": "2b6cc84001c746a954e110922862b653",
+                        "name": "Dalia"
+                    }
+                ]
+            },
+            "codigo": "f631e054f3116b6e82a799e8938a3fe7"
+        },
+        {
+            "id": 41,
+            "nombre": "Opcion 3",
+            "consigna": "Marca los gustos de helado que te gustan",
+            "dominio": {
+                "id": 31,
+                "nombre": "Sociales"
+            },
+            "tipo": {
+                "id": 6,
+                "nombre": "Opci\u00f3n m\u00faltiple",
+                "codigo": "multiple"
+            },
+            "extra": {
+                "elements": [
+                    {
+                        "code": "079ed094d335ce3806db90e2262dcd1b",
+                        "name": "Chocolate"
+                    },
+                    {
+                        "code": "a86c4f002851deaa4607f78faef6e43d",
+                        "name": "Vainilla"
+                    },
+                    {
+                        "code": "afd4a29fd3c2ee9f8a5cc22bb088709f",
+                        "name": "Frutilla"
+                    },
+                    {
+                        "code": "d638e20b995f7d18c50f3c2579796b4e",
+                        "name": "Dulce de leche"
+                    }
+                ],
+                "validElements": []
+            },
+            "codigo": "ab5c77eefcf9125b517627d9ee70ffd5"
+        },
+        {
+            "id": 42,
+            "nombre": "Ultima tarea",
+            "consigna": "Escrib\u00ed un n\u00famero de loter\u00eda",
+            "dominio": {
+                "id": 29,
+                "nombre": "Matem\u00e1tica"
+            },
+            "tipo": {
+                "id": 3,
+                "nombre": "Ingresar n\u00famero",
+                "codigo": "numberInput"
+            },
+            "extra": [],
+            "codigo": "23f7be195b66cb3bcefc698d6f0ea8d9"
+        }
+    ],
+    "planificacion": {
+        "id": 8,
+        "saltos": [
+            {
+                "destino_ids": [
+                    42
+                ],
+                "origen_ids": 39,
+                "id": 5,
+                "respuesta": null,
+                "condicion": "ALL"
+            },
+            {
+                "destino_ids": [
+                    39,
+                    40,
+                    41
+                ],
+                "origen_ids": 38,
+                "id": 6,
+                "respuesta": null,
+                "condicion": "ALL"
+            },
+            {
+                "destino_ids": [],
+                "origen_ids": 42,
+                "id": 7,
+                "respuesta": null,
+                "condicion": "ALL"
+            },
+            {
+                "destino_ids": [
+                    42
+                ],
+                "origen_ids": 40,
+                "id": 8,
+                "respuesta": null,
+                "condicion": "ALL"
+            },
+            {
+                "destino_ids": [
+                    42
+                ],
+                "origen_ids": 41,
+                "id": 9,
+                "respuesta": null,
+                "condicion": "ALL"
+            }
+        ]
+    }
+}
