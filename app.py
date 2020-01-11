@@ -14,4 +14,4 @@ def get_actividad(id):
 
 
 if __name__ == '__main__':
-    api.run()
+    api.run(threaded=True, port=80)
