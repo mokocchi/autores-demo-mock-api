@@ -1,0 +1,8 @@
+{
+            "id": 1,
+            "roles": ["ROLE_AUTOR"],
+            "nombre": "Ana",
+            "apellido": "González",
+            "email": "autor1@dehia.net",
+            "googleid": "1001"
+}

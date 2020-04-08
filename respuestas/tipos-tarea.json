@@ -1,4 +1,4 @@
-[
+{"results":[
     {
         "id": 1,
         "nombre": "Simple",
@@ -49,4 +49,4 @@
         "nombre": "Localizaci\u00f3n",
         "codigo": "GPSInput"
     }
-]
+]}

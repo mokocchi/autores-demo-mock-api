@@ -5,6 +5,8 @@ import os
 DIR = "respuestas"
 API_BASE_URI = "/api/v1.0"
 
+f = open(DIR + "/me.json")
+me = f.read()
 f = open(DIR + "/actividades_15.json")
 actividades_15 = f.read()
 f = open(DIR + "/actividades_15_tareas.json")
@@ -17,7 +19,10 @@ f = open(DIR + "/tipos-tarea.json")
 tipos_tarea = f.read()
 f = open(DIR + "/tipos-planificacion.json")
 tipos_planificacion = f.read()
-
+f = open(DIR + "/planificacion.json")
+planificacion = f.read()
+f = open(DIR + "/tareas.json")
+tareas = f.read()
 
 def formatResponse(file_read):
     parsed = json.loads(file_read)
@@ -36,10 +41,32 @@ def page_not_found(error):
     response["errors"] = error_message
     return Response(json.dumps(response)), 404
 
+@api.route('/api/oauth/v2/token', methods=['POST'])
+@cross_origin()
+def get_token():
+    response = {}
+    response["access_token"] = 1
+    response["expires_in"] = 3600
+    return Response(json.dumps(response)), 200
+
+@api.route(API_BASE_URI + '/me', methods=['GET'])
+@cross_origin()
+def get_me():
+    return formatResponse(me)
+
+@api.route(API_BASE_URI + '/tareas/user', methods=['GET'])
+@cross_origin()
+def get_tareas():
+    return formatResponse(tareas)
 
 @api.route(API_BASE_URI + '/actividades/<int:id>', methods=['GET'])
 @cross_origin()
 def get_actividad(id):
+    return formatResponse(actividades_15)
+
+@api.route(API_BASE_URI + '/public/actividades/<int:id>', methods=['GET'])
+@cross_origin()
+def get_actividad_public(id):
     return formatResponse(actividades_15)
 
 
@@ -48,26 +75,46 @@ def get_actividad(id):
 def get_actividad_tareas(id):
     return formatResponse(actividades_15_tareas)
 
+@api.route(API_BASE_URI + '/public/actividades/<int:id>/tareas', methods=['GET'])
+@cross_origin()
+def get_actividad_tareas_public(id):
+    return formatResponse(actividades_15_tareas)
 
-@api.route(API_BASE_URI + '/dominios')
+@api.route(API_BASE_URI + '/planificaciones/<int:id>', methods=['GET'])
+@cross_origin()
+def get_planificacion(id):
+    return formatResponse(planificacion)
+
+@api.route(API_BASE_URI + '/public/planificaciones/<int:id>', methods=['GET'])
+@cross_origin()
+def get_planificacion_public(id):
+    return formatResponse(planificacion)
+
+
+@api.route(API_BASE_URI + '/public/dominios')
 @cross_origin()
 def get_dominios():
     return formatResponse(dominios)
 
+@api.route(API_BASE_URI + '/public/estados')
+@cross_origin()
+def get_estados():
+    return formatResponse(estados)
 
-@api.route(API_BASE_URI + '/idiomas')
+
+@api.route(API_BASE_URI + '/public/idiomas')
 @cross_origin()
 def get_idiomas():
     return formatResponse(idiomas)
 
 
-@api.route(API_BASE_URI + '/tipos-tarea')
+@api.route(API_BASE_URI + '/public/tipos-tarea')
 @cross_origin()
 def get_tipos_tarea():
     return formatResponse(tipos_tarea)
 
 
-@api.route(API_BASE_URI + '/tipos-planificacion')
+@api.route(API_BASE_URI + '/public/tipos-planificacion')
 @cross_origin()
 def get_tipos_planificacion():
     return formatResponse(tipos_planificacion)
