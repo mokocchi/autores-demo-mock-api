@@ -1,7 +1,12 @@
 from flask import Flask, json, Response, request
 from flask_cors import CORS, cross_origin
 from db_init import db_init
+from base import session_factory
 import os
+
+from entities.dominio import Dominio
+from entities.estado import Estado
+from entities.tipo_tarea import TipoTarea
 
 DIR = "respuestas"
 API_BASE_URI = "/api/v1.0"
@@ -12,14 +17,8 @@ f = open(DIR + "/actividades_15.json")
 actividades_15 = f.read()
 f = open(DIR + "/actividades_15_tareas.json")
 actividades_15_tareas = f.read()
-f = open(DIR + "/dominios.json")
-dominios = f.read()
-f = open(DIR + "/estados.json")
-estados = f.read()
 f = open(DIR + "/idiomas.json")
 idiomas = f.read()
-f = open(DIR + "/tipos-tarea.json")
-tipos_tarea = f.read()
 f = open(DIR + "/tipos-planificacion.json")
 tipos_planificacion = f.read()
 f = open(DIR + "/planificacion.json")
@@ -106,13 +105,27 @@ def get_planificacion_public(id):
 @api.route(API_BASE_URI + '/public/dominios', methods=['GET'])
 @cross_origin()
 def get_dominios():
-    return formatResponse(dominios)
+    session = session_factory()
+    dominios = session.query(Dominio).all()
+    dominios_json = []
+    for dominio in dominios:
+        dominios_json.append(dominio.to_json())
+    response = {}
+    response["results"] = dominios_json
+    return Response(json.dumps(response)), 200
 
 
 @api.route(API_BASE_URI + '/public/estados', methods=['GET'])
 @cross_origin()
 def get_estados():
-    return formatResponse(estados)
+    session = session_factory()
+    estados = session.query(Estado).all()
+    estados_json = []
+    for estado in estados:
+        estados_json.append(estado.to_json())
+    response = {}
+    response["results"] = estados_json
+    return Response(json.dumps(response)), 200
 
 
 @api.route(API_BASE_URI + '/public/idiomas', methods=['GET'])
@@ -124,7 +137,14 @@ def get_idiomas():
 @api.route(API_BASE_URI + '/public/tipos-tarea', methods=['GET'])
 @cross_origin()
 def get_tipos_tarea():
-    return formatResponse(tipos_tarea)
+    session = session_factory()
+    tipos_tarea = session.query(TipoTarea).all()
+    tipos_tarea_json = []
+    for tipo_tarea in tipos_tarea:
+        tipos_tarea_json.append(tipo_tarea.to_json())
+    response = {}
+    response["results"] = tipos_tarea_json
+    return Response(json.dumps(response)), 200
 
 
 @api.route(API_BASE_URI + '/public/tipos-planificacion', methods=['GET'])
