@@ -1,6 +1,7 @@
 from entities.dominio import Dominio
 from entities.estado import Estado
 from entities.tipo_tarea import TipoTarea
+from entities.actividad import Actividad
 from base import session_factory, engine, Base
 import os
 
@@ -8,6 +9,9 @@ import os
 def db_init():
     Base.metadata.create_all(engine)
     session = session_factory()
+
+    actividad = Actividad()
+    session.add(Actividad)
 
     dominios = []
     dominios.append(Dominio("Pruebas"))

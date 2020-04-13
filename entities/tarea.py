@@ -1,6 +1,7 @@
 # coding=utf-8
 
 from sqlalchemy import Column, String, Integer, Table, ForeignKey, JSON
+from sqlalchemy.orm import relationship
 
 from base import Base
 
@@ -15,6 +16,8 @@ class Tarea(Base):
     dominio_id = Column(Integer, ForeignKey('dominio.id'))
     estado_id = Column(Integer, ForeignKey('estado.id'))
     tipo_tarea_id = Column(Integer, ForeignKey('tipo_tarea.id'))
+    actividad_id = Column(Integer, ForeignKey('actividad.id'))
+    actividad = relationship("Actividad", back_populates="tareas")
 
     def __init__(self, nombre, consigna, extra, codigo, dominio, estado, tipo_tarea):
         self.nombre = nombre
@@ -35,7 +38,8 @@ class Tarea(Base):
             "consigna": self.consigna,
             "dominio": self.dominio.to_json(),
             "estado": self.estado.to_json(),
-            "tipo_tarea": self.tipo_tarea.to_json()
+            "tipo": self.tipo_tarea.to_json(),
+            "extra": self.extra
         }
     
     def set_dominio(self, dominio):
