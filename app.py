@@ -7,6 +7,7 @@ import os
 from entities.dominio import Dominio
 from entities.estado import Estado
 from entities.tipo_tarea import TipoTarea
+from entities.tarea import Tarea
 
 DIR = "respuestas"
 API_BASE_URI = "/api/v1.0"
@@ -63,7 +64,56 @@ def get_me():
 @api.route(API_BASE_URI + '/tareas/user', methods=['GET'])
 @cross_origin()
 def get_tareas():
-    return formatResponse(tareas)
+    session = session_factory()
+    tareas = session.query(Tarea).all()
+    tareas_json = []
+    for tarea in tareas:
+        tarea.set_dominio(session.query(Dominio).get(tarea.dominio_id))
+        tarea.set_estado(session.query(Estado).get(tarea.estado_id))
+        tarea.set_tipo_tarea(session.query(TipoTarea).get(tarea.tipo_tarea_id))
+        tareas_json.append(tarea.to_json())
+    result = {}
+    result['results'] = tareas_json
+    response = Response(json.dumps(result))
+    session.close()
+    return response, 200
+
+@api.route(API_BASE_URI + '/tareas/<int:id>', methods=['GET'])
+@cross_origin()
+def get_Tarea(id):
+    session = session_factory()
+    tarea = session.query(Tarea).get(id)
+    tarea.set_dominio(session.query(Dominio).get(tarea.dominio_id))
+    tarea.set_estado(session.query(Estado).get(tarea.estado_id))
+    tarea.set_tipo_tarea(session.query(TipoTarea).get(tarea.tipo_tarea_id))
+    response = Response(json.dumps(tarea.to_json()))
+    session.close()
+    return response, 200
+
+@api.route(API_BASE_URI + '/tareas', methods=['POST'])
+@cross_origin()
+def post_tarea():
+    data = request.json
+    nombre = data["nombre"]
+    consigna = data["consigna"]
+    codigo = data["codigo"]
+    tipo_id = data["tipo"]
+    dominio_id = data["dominio"]
+    estado_id = data["estado"]
+    extra = data["extraData"]
+
+    session = session_factory()
+    dominio = session.query(Dominio).get(dominio_id)
+    estado = session.query(Estado).get(estado_id)
+    tipo = session.query(TipoTarea).get(tipo_id)
+
+    tarea = Tarea(nombre, consigna, extra, codigo, dominio, estado, tipo)
+    session.add(tarea)
+
+    session.commit()
+    response = Response(json.dumps(tarea.to_json()))
+    session.close()
+    return response, 200
 
 
 @api.route(API_BASE_URI + '/actividades/<int:id>', methods=['GET'])
@@ -82,7 +132,6 @@ def get_actividad_public(id):
 @cross_origin()
 def get_actividad_tareas(id):
     return formatResponse(actividades_15_tareas)
-
 
 @api.route(API_BASE_URI + '/public/actividades/<int:id>/tareas', methods=['GET'])
 @cross_origin()
