@@ -1,8 +1,11 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+import os
 
-engine = create_engine('postgresql://dbuser:dbpassword@localhost:5432/sqlalchemy-orm-tutorial')
+url = os.environ.get("DATABASE_URL", 'postgresql://dbuser:dbpassword@localhost:5432/dehia-mock-api')
+
+engine = create_engine(url)
 _SessionFactory = sessionmaker(bind=engine)
 
 Base = declarative_base()
