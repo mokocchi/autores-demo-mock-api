@@ -11,7 +11,7 @@ def db_init():
     session = session_factory()
 
     actividad = Actividad()
-    session.add(Actividad)
+    session.add(actividad)
 
     dominios = []
     dominios.append(Dominio("Pruebas"))
